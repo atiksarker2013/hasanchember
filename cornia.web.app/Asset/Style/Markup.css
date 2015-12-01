@@ -1,0 +1,89 @@
+﻿* a:active { outline:none; }
+* a:focus { outline:none; }
+
+html
+{
+    font-family:'Segoe UI', 'Segoe WP', Segoe, Roboto, Verdana, Arial, Helvetica, 'Helvetica Neue';
+    font-size:1.8em;
+    margin: 0;
+    padding:0;
+    background-color:#1F67B3;
+    color:#fff;
+    height:100%;
+    width:100%;
+}
+
+body
+{
+    margin: 0;
+    padding:0;
+}
+
+::selection
+{
+    background:#333;
+    color:#fff;
+}
+::-moz-selection
+{
+    background:#333;
+    color:#fff;
+}
+
+a, a:link, a:visited
+{
+    color: #000;
+    text-decoration: none;
+    -webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+
+a:hover, a:active
+{
+    color: #333;
+    text-decoration: none;
+    -webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+
+h1
+{
+    margin: 0 0 0.3em 0;
+    padding:0;
+    font-weight:normal;
+    font-size:2em;
+}
+
+p
+{
+    margin: 0;
+    padding:0;
+}
+
+/* ----------------------- / Tag -------------------------- */
+
+
+
+/* ----------------------- Common ------------------------- */
+
+.Clear
+{
+    clear: both;
+    position: relative;
+    height: 0;
+}
+
+.Message
+{
+    width:60%;
+    padding:10% 0 0 0;
+    margin: 0 auto;
+    text-align:left;
+    font-weight:normal;
+}

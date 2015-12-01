@@ -1,0 +1,734 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HasanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Occupation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MrNo" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="PatientAddress" Type="varchar" MaxLength="50" />
+          <Property Name="Sex" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="FatherName" Type="varchar" MaxLength="50" />
+          <Property Name="EducationRef" Type="int" />
+          <Property Name="OccupationRef" Type="int" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
+          <Property Name="SecondPhoneNo" Type="varchar" MaxLength="50" />
+          <Property Name="DisOcular" Type="varchar" MaxLength="50" />
+          <Property Name="DisSystemic" Type="varchar" MaxLength="50" />
+          <Property Name="DisAlergy" Type="varchar" MaxLength="50" />
+          <Property Name="ChifComplain" Type="varchar" MaxLength="50" />
+          <Property Name="PresentHistory" Type="varchar" MaxLength="50" />
+          <Property Name="HistoryDuration" Type="varchar" MaxLength="50" />
+          <Property Name="PastHistory" Type="varchar" MaxLength="50" />
+          <Property Name="SurType" Type="varchar" MaxLength="50" />
+          <Property Name="SurEye" Type="varchar" MaxLength="50" />
+          <Property Name="SurDate" Type="date" />
+          <Property Name="MediOcular" Type="varchar" MaxLength="50" />
+          <Property Name="MediSystemic" Type="varchar" MaxLength="50" />
+          <Property Name="InfoEntryDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PermissionTypeRef" Type="int" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PermissionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="aKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserTypeRef" Type="int" Nullable="false" />
+          <Property Name="GroupCompanyRef" Type="int" />
+          <Property Name="CustomerRef" Type="int" />
+          <Property Name="FactoryRef" Type="int" />
+          <Property Name="PersonRef" Type="int" />
+          <Property Name="EmployeeRef" Type="int" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PIN" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangePasswordAtNextLogon" Type="bit" Nullable="false" />
+          <Property Name="MailNotification" Type="bit" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Hasan.dbo.UserPermission' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserPermission">
+          <Key>
+            <PropertyRef Name="UserRef" />
+            <PropertyRef Name="PermissionRef" />
+            <PropertyRef Name="Denied" />
+          </Key>
+          <Property Name="UserRef" Type="int" Nullable="false" />
+          <Property Name="PermissionRef" Type="int" Nullable="false" />
+          <Property Name="Denied" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTypePermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeRef" Type="int" Nullable="false" />
+          <Property Name="PermissionRef" Type="int" Nullable="false" />
+          <Property Name="Denied" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Patient_Education">
+          <End Role="Education" Type="Self.Education" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="EducationRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patient_Occupation">
+          <End Role="Occupation" Type="Self.Occupation" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Occupation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="OccupationRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permission_PermissionType">
+          <End Role="PermissionType" Type="Self.PermissionType" Multiplicity="0..1" />
+          <End Role="Permission" Type="Self.Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PermissionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permission">
+              <PropertyRef Name="PermissionTypeRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserType">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermission_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermission">
+              <PropertyRef Name="PermissionRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermission_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermission">
+              <PropertyRef Name="UserRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTypePermission_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="UserTypePermission" Type="Self.UserTypePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTypePermission">
+              <PropertyRef Name="PermissionRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTypePermission_UserType">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="UserTypePermission" Type="Self.UserTypePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTypePermission">
+              <PropertyRef Name="UserTypeRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HasanModelStoreContainer">
+          <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Occupation" EntityType="Self.Occupation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermissionType" EntityType="Self.PermissionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypePermission" EntityType="Self.UserTypePermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPermission" EntityType="Self.UserPermission" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserPermission].[UserRef] AS [UserRef], 
+    [UserPermission].[PermissionRef] AS [PermissionRef], 
+    [UserPermission].[Denied] AS [Denied]
+    FROM [dbo].[UserPermission] AS [UserPermission]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Patient_Education" Association="Self.FK_Patient_Education">
+            <End Role="Education" EntitySet="Education" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patient_Occupation" Association="Self.FK_Patient_Occupation">
+            <End Role="Occupation" EntitySet="Occupation" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permission_PermissionType" Association="Self.FK_Permission_PermissionType">
+            <End Role="PermissionType" EntitySet="PermissionType" />
+            <End Role="Permission" EntitySet="Permission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermission_Permission" Association="Self.FK_UserPermission_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="UserPermission" EntitySet="UserPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermission_User" Association="Self.FK_UserPermission_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserPermission" EntitySet="UserPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTypePermission_Permission" Association="Self.FK_UserTypePermission_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="UserTypePermission" EntitySet="UserTypePermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTypePermission_UserType" Association="Self.FK_UserTypePermission_UserType">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="UserTypePermission" EntitySet="UserTypePermission" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HasanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gKey" Type="Guid" Nullable="false" />
+          <Property Name="PermissionTypeRef" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PermissionType" Relationship="Self.FK_Permission_PermissionType" FromRole="Permission" ToRole="PermissionType" />
+          <NavigationProperty Name="UserPermission" Relationship="Self.FK_UserPermission_Permission" FromRole="Permission" ToRole="UserPermission" />
+          <NavigationProperty Name="UserTypePermission" Relationship="Self.FK_UserTypePermission_Permission" FromRole="Permission" ToRole="UserTypePermission" />
+        </EntityType>
+        <EntityType Name="PermissionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gKey" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Permission" Relationship="Self.FK_Permission_PermissionType" FromRole="PermissionType" ToRole="Permission" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gKey" Type="Guid" Nullable="false" />
+          <Property Name="aKey" Type="Guid" Nullable="false" />
+          <Property Name="UserTypeRef" Type="Int32" Nullable="false" />
+          <Property Name="GroupCompanyRef" Type="Int32" />
+          <Property Name="CustomerRef" Type="Int32" />
+          <Property Name="FactoryRef" Type="Int32" />
+          <Property Name="PersonRef" Type="Int32" />
+          <Property Name="EmployeeRef" Type="Int32" />
+          <Property Name="EMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PIN" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChangePasswordAtNextLogon" Type="Boolean" Nullable="false" />
+          <Property Name="MailNotification" Type="Boolean" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK_User_UserType" FromRole="User" ToRole="UserType" />
+          <NavigationProperty Name="UserPermission" Relationship="Self.FK_UserPermission_User" FromRole="User" ToRole="UserPermission" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gKey" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_UserType" FromRole="UserType" ToRole="User" />
+          <NavigationProperty Name="UserTypePermission" Relationship="Self.FK_UserTypePermission_UserType" FromRole="UserType" ToRole="UserTypePermission" />
+        </EntityType>
+        <EntityType Name="UserTypePermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeRef" Type="Int32" Nullable="false" />
+          <Property Name="PermissionRef" Type="Int32" Nullable="false" />
+          <Property Name="Denied" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Permission" Relationship="Self.FK_UserTypePermission_Permission" FromRole="UserTypePermission" ToRole="Permission" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK_UserTypePermission_UserType" FromRole="UserTypePermission" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="UserPermission">
+          <Key>
+            <PropertyRef Name="UserRef" />
+            <PropertyRef Name="PermissionRef" />
+            <PropertyRef Name="Denied" />
+          </Key>
+          <Property Name="UserRef" Type="Int32" Nullable="false" />
+          <Property Name="PermissionRef" Type="Int32" Nullable="false" />
+          <Property Name="Denied" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Permission" Relationship="Self.FK_UserPermission_Permission" FromRole="UserPermission" ToRole="Permission" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserPermission_User" FromRole="UserPermission" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Permission_PermissionType">
+          <End Role="PermissionType" Type="Self.PermissionType" Multiplicity="0..1" />
+          <End Role="Permission" Type="Self.Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PermissionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permission">
+              <PropertyRef Name="PermissionTypeRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermission_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermission">
+              <PropertyRef Name="PermissionRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTypePermission_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="UserTypePermission" Type="Self.UserTypePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTypePermission">
+              <PropertyRef Name="PermissionRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserType">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermission_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermission">
+              <PropertyRef Name="UserRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTypePermission_UserType">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="UserTypePermission" Type="Self.UserTypePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTypePermission">
+              <PropertyRef Name="UserTypeRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HasanEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Permission" EntityType="Self.Permission" />
+          <EntitySet Name="PermissionType" EntityType="Self.PermissionType" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" />
+          <EntitySet Name="UserTypePermission" EntityType="Self.UserTypePermission" />
+          <EntitySet Name="UserPermission" EntityType="Self.UserPermission" />
+          <AssociationSet Name="FK_Permission_PermissionType" Association="Self.FK_Permission_PermissionType">
+            <End Role="PermissionType" EntitySet="PermissionType" />
+            <End Role="Permission" EntitySet="Permission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermission_Permission" Association="Self.FK_UserPermission_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="UserPermission" EntitySet="UserPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTypePermission_Permission" Association="Self.FK_UserTypePermission_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="UserTypePermission" EntitySet="UserTypePermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermission_User" Association="Self.FK_UserPermission_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserPermission" EntitySet="UserPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTypePermission_UserType" Association="Self.FK_UserTypePermission_UserType">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="UserTypePermission" EntitySet="UserTypePermission" />
+          </AssociationSet>
+          <EntitySet Name="Education" EntityType="HasanModel.Education" />
+          <EntitySet Name="Occupation" EntityType="HasanModel.Occupation" />
+          <EntitySet Name="Patient" EntityType="HasanModel.Patient" />
+          <AssociationSet Name="FK_Patient_Education" Association="HasanModel.FK_Patient_Education">
+            <End Role="Education" EntitySet="Education" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patient_Occupation" Association="HasanModel.FK_Patient_Occupation">
+            <End Role="Occupation" EntitySet="Occupation" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="HasanModel.FK_Patient_Education" FromRole="Education" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Occupation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="HasanModel.FK_Patient_Occupation" FromRole="Occupation" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MrNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PatientAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EducationRef" Type="Int32" />
+          <Property Name="OccupationRef" Type="Int32" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SecondPhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisOcular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisSystemic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisAlergy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChifComplain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PresentHistory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HistoryDuration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PastHistory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SurType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SurEye" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SurDate" Type="DateTime" Precision="0" />
+          <Property Name="MediOcular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MediSystemic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InfoEntryDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Education" Relationship="HasanModel.FK_Patient_Education" FromRole="Patient" ToRole="Education" />
+          <NavigationProperty Name="Occupation" Relationship="HasanModel.FK_Patient_Occupation" FromRole="Patient" ToRole="Occupation" />
+        </EntityType>
+        <Association Name="FK_Patient_Education">
+          <End Type="HasanModel.Education" Role="Education" Multiplicity="0..1" />
+          <End Type="HasanModel.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="EducationRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patient_Occupation">
+          <End Type="HasanModel.Occupation" Role="Occupation" Multiplicity="0..1" />
+          <End Type="HasanModel.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Occupation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="OccupationRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HasanModelStoreContainer" CdmEntityContainer="HasanEntities">
+          <EntitySetMapping Name="Permission">
+            <EntityTypeMapping TypeName="HasanModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="gKey" ColumnName="gKey" />
+                <ScalarProperty Name="PermissionTypeRef" ColumnName="PermissionTypeRef" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermissionType">
+            <EntityTypeMapping TypeName="HasanModel.PermissionType">
+              <MappingFragment StoreEntitySet="PermissionType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="gKey" ColumnName="gKey" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="HasanModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="gKey" ColumnName="gKey" />
+                <ScalarProperty Name="aKey" ColumnName="aKey" />
+                <ScalarProperty Name="UserTypeRef" ColumnName="UserTypeRef" />
+                <ScalarProperty Name="GroupCompanyRef" ColumnName="GroupCompanyRef" />
+                <ScalarProperty Name="CustomerRef" ColumnName="CustomerRef" />
+                <ScalarProperty Name="FactoryRef" ColumnName="FactoryRef" />
+                <ScalarProperty Name="PersonRef" ColumnName="PersonRef" />
+                <ScalarProperty Name="EmployeeRef" ColumnName="EmployeeRef" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PIN" ColumnName="PIN" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="ChangePasswordAtNextLogon" ColumnName="ChangePasswordAtNextLogon" />
+                <ScalarProperty Name="MailNotification" ColumnName="MailNotification" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserType">
+            <EntityTypeMapping TypeName="HasanModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="gKey" ColumnName="gKey" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypePermission">
+            <EntityTypeMapping TypeName="HasanModel.UserTypePermission">
+              <MappingFragment StoreEntitySet="UserTypePermission">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserTypeRef" ColumnName="UserTypeRef" />
+                <ScalarProperty Name="PermissionRef" ColumnName="PermissionRef" />
+                <ScalarProperty Name="Denied" ColumnName="Denied" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPermission">
+            <EntityTypeMapping TypeName="HasanModel.UserPermission">
+              <MappingFragment StoreEntitySet="UserPermission">
+                <ScalarProperty Name="UserRef" ColumnName="UserRef" />
+                <ScalarProperty Name="PermissionRef" ColumnName="PermissionRef" />
+                <ScalarProperty Name="Denied" ColumnName="Denied" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education">
+            <EntityTypeMapping TypeName="HasanModel.Education">
+              <MappingFragment StoreEntitySet="Education">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Occupation">
+            <EntityTypeMapping TypeName="HasanModel.Occupation">
+              <MappingFragment StoreEntitySet="Occupation">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patient">
+            <EntityTypeMapping TypeName="HasanModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="InfoEntryDate" ColumnName="InfoEntryDate" />
+                <ScalarProperty Name="MediSystemic" ColumnName="MediSystemic" />
+                <ScalarProperty Name="MediOcular" ColumnName="MediOcular" />
+                <ScalarProperty Name="SurDate" ColumnName="SurDate" />
+                <ScalarProperty Name="SurEye" ColumnName="SurEye" />
+                <ScalarProperty Name="SurType" ColumnName="SurType" />
+                <ScalarProperty Name="PastHistory" ColumnName="PastHistory" />
+                <ScalarProperty Name="HistoryDuration" ColumnName="HistoryDuration" />
+                <ScalarProperty Name="PresentHistory" ColumnName="PresentHistory" />
+                <ScalarProperty Name="ChifComplain" ColumnName="ChifComplain" />
+                <ScalarProperty Name="DisAlergy" ColumnName="DisAlergy" />
+                <ScalarProperty Name="DisSystemic" ColumnName="DisSystemic" />
+                <ScalarProperty Name="DisOcular" ColumnName="DisOcular" />
+                <ScalarProperty Name="SecondPhoneNo" ColumnName="SecondPhoneNo" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="OccupationRef" ColumnName="OccupationRef" />
+                <ScalarProperty Name="EducationRef" ColumnName="EducationRef" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="PatientAddress" ColumnName="PatientAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MrNo" ColumnName="MrNo" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

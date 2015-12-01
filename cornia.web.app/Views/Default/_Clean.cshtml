@@ -1,0 +1,26 @@
+﻿ 
+<!DOCTYPE html>
+ 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <meta name="author" content="Magnifo / http://www.magnifo.com" />
+    <link href="Favicon.ico" rel="shortcut icon" />
+
+    @Styles.Render("~/Asset/Style/Pack")
+    @Styles.RenderFormat(@"<link href=""{0}"" rel=""stylesheet"" media=""print"" />", "~/Asset/Print/Pack")
+    <script src="@Url.Content("~/Script")"></script>
+    @Scripts.Render("~/Asset/Script/Pack")
+</head>
+<body>
+    
+    <span id="ToastBox"></span>
+    <span id="staticNotification"></span>
+    <div id="CleanContainer">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/Asset/Complete/Pack")
+</body>
+</html>

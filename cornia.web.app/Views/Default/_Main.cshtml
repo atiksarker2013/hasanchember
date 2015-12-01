@@ -1,0 +1,66 @@
+﻿ 
+<!DOCTYPE html>
+ 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="PRAGMA" content="NO-CACHE">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <meta name="author" content="Magnifo / http://www.magnifo.com" />
+    <link href="Favicon.ico" rel="shortcut icon" />
+
+    @Styles.Render("~/Asset/Style/Pack")
+    @Styles.RenderFormat(@"<link href=""{0}"" rel=""stylesheet"" media=""print"" />", "~/Asset/Print/Pack")
+    <script src="@Url.Content("~/Script")"></script>
+    @Scripts.Render("~/Asset/Script/Pack")
+   
+</head>
+<body>
+    <span id="ToastBox"></span>
+    @Html.Partial("~/Views/Default/_Partial_Browser.cshtml")
+    <section id="MainContainer">
+        <header class="navbar navbar-default navbar-static-top clearfix Header" id="Header" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="@Url.Content("~/Dashboard")"><img src="@Url.Content("~/Asset/Image/Logo_Focus.svg")" alt=""></a>
+                </div>
+                <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav NavMenuSide">
+                        <li>
+                            <a id="btnSideMenu" href="javascript:;" class="CircleButton">
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-circle fa-stack-2x Back"></i>
+                                    <i class="fa fa-bars fa-stack-1x Face"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right NavMenuRest">
+                        @*@Html.Partial("~/Views/Default/_Partial_Notification.cshtml")*@
+                        @*@Html.Partial("~/Views/Default/_Partial_Language.cshtml")*@
+                        @Html.Partial("~/Views/Default/_Partial_Login.cshtml")
+                    </ul>
+                </div>
+            </div>
+        </header>
+       
+        @*@Html.Partial("~/Views/Default/_Partial_Menu.cshtml")*@
+
+        @{
+            Html.RenderAction("GetMenuList", "Menu");
+        }
+
+        @RenderBody()
+
+    </section>
+   
+
+    
+    @RenderSection("Scripts", required: false) @* This is for KendoUI. Somehow helps when it is necessary load script block at bottom of the page *@
+    @Scripts.Render("~/Asset/Complete/Pack")
+</body>
+
+
+</html>

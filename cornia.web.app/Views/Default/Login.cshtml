@@ -1,0 +1,114 @@
+﻿@{
+    Layout = "~/Views/Default/_Clean.cshtml";
+}
+ 
+@model cornia.core.DTO.LogInModel
+@*@Html.Partial("~/Views/Default/_Partial_Browser.cshtml")*@
+<div class="CleanBoxContainer">
+
+    <form id="frmLogin" method="post">
+
+        @*Longin_Warning_Area*@
+        <span id="popupNotification"></span>
+        <!-- Login -->
+        <section class="CleanBox" id="LoginBox">
+            <div class="LogoBox"><img src="@Url.Content("~/Asset/Image/Logo_Focus.svg")" /></div>
+            <div class="WarningArea alert-warning alert TextCenter " id="Longin_Warning_Area" role="alert"></div>
+            @*<div id="appendto" class="k-block"></div>*@
+            <div class="FormBox">
+                <input class="form-control TextCenter k-input required" required type="email" name="Email" id="Email" value="@Model.Email" placeholder="E-Mail" autofocus>
+                <input class="form-control TextCenter k-input required" required type="password" name="Password" id="Password" value="@Model.Password" placeholder="Password">
+                <div class="H1"></div>
+                <div class="SingleLine TextCenter LineSpace"><input type="checkbox" class="k-checkbox" data-bind="checked: Active" id="RememberMe" name="RememberMe" value="true" checked /><label class="k-checkbox-label" for="RememberMe"> <span>Remember Me</span></label></div>
+                <div class="SingleLine TextCenter LineSpace"><a data-toggle="modal" href="#myModal"> Forgot Password?</a></div>
+                <div class="SingleLine"><button class="btn btn-lg btn-block k-primary" id="btnLogin" type="button" onclick="return Add();">Login</button></div>
+            </div>
+        </section>
+        <!-- / Login -->
+
+        <!-- Modal -->
+        
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Forgot Password ?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Enter your e-mail address below to get your password by email</p>
+                        <input type="email" name="ForgetPasswordEmail" id="ForgetPasswordEmail" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix" />
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                        <input type="button" value="Submit" id="btnPasswordRemainder" class="btn btn-success btnActive" onclick="return ForgetPassword();" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / Modal -->
+
+    </form>
+    
+    <script>
+    $(document).ready(function () {
+        $('#Longin_Warning_Area').hide();
+    });
+
+    function Add() {
+        kendo.ui.progress($("#btnLogin"), true);
+        $.ajax({
+            type: "POST",
+            url: '@Url.Content("~/Login/DoLogin")',
+            data: $('#frmLogin').serialize(),
+            dataType: "json",
+            async: true,
+            success: function (data) {
+                kendo.ui.progress($("#btnLogin"), false);
+                if (data.ResultValue == 1000) {
+                    window.location.replace('@Url.Content("~/Dashboard")');
+                }
+                else if (data.ResponseCode == 1053) {
+                    window.location.replace('@Url.Content("~/ChangePassword")');
+                } else {
+
+                    $('#Longin_Warning_Area').show();
+                    var errorMsg = data.ResponseMessage;
+                    document.getElementById("Longin_Warning_Area").innerHTML = errorMsg
+                }
+            }
+        });
+    }
+
+
+    function ForgetPassword() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Content("~/Login/DoLoginForgetPassword")',
+            data: $('#frmLogin').serialize(),
+            dataType: "json",
+            async: true,
+            success: function (data) {
+                kendo.ui.progress($("#btnPasswordRemainder"), true);
+                if (data.ResponseCode == 129) {
+                    popupNotification.show(data.ResponseMessage, "error");
+                } else if (data.ResponseCode == 131) {
+                    popupNotification.show(data.ResponseMessage, "error");
+                } else if (data.ResponseCode == 1000) {
+                    window.location.replace('@Url.Content("~/Login")');
+                } else {
+                    popupNotification.show(data.ResponseMessage, "error");
+                }
+            },
+            error: function (x, y, z) {
+                alert("Error:" + x + '\n' + y + '\n' + z);
+            }
+        });
+
+    };
+
+    </script>
+
+
+
+</div>

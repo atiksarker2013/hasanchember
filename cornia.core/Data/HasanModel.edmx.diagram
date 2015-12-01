@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="40b1d0da8ab94cbbb3725080570e9ff9" Name="Diagram1">
+        <EntityTypeShape EntityType="HasanModel.Permission" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HasanModel.PermissionType" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HasanModel.User" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HasanModel.UserType" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HasanModel.UserTypePermission" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HasanModel.UserPermission" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="HasanModel.FK_Permission_PermissionType" ManuallyRouted="false" />
+        <AssociationConnector Association="HasanModel.FK_UserPermission_Permission" ManuallyRouted="false" />
+        <AssociationConnector Association="HasanModel.FK_UserTypePermission_Permission" ManuallyRouted="false" />
+        <AssociationConnector Association="HasanModel.FK_User_UserType" ManuallyRouted="false" />
+        <AssociationConnector Association="HasanModel.FK_UserPermission_User" ManuallyRouted="false" />
+        <AssociationConnector Association="HasanModel.FK_UserTypePermission_UserType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HasanModel.Education" Width="1.5" PointX="5.375" PointY="9.5" />
+        <EntityTypeShape EntityType="HasanModel.Occupation" Width="1.5" PointX="5.375" PointY="12.5" />
+        <EntityTypeShape EntityType="HasanModel.Patient" Width="1.5" PointX="7.625" PointY="7.125" />
+        <AssociationConnector Association="HasanModel.FK_Patient_Education" />
+        <AssociationConnector Association="HasanModel.FK_Patient_Occupation" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

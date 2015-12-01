@@ -1,0 +1,347 @@
+﻿@model cornia.core.DTO.MenuViewModel
+
+
+<aside id="SideMenu" class="SideMenu">
+
+    <div class="SideNavigation">
+        <ul class="Side-Accordion" id="Side-Accordion">
+
+            <li><a href="@Url.Content("~/Dashboard")"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+            <li class="Sub-Accordion">
+                <a href="javascript:;"><i class="fa fa-tasks"></i><span>Operation</span></a>
+                <ul class="Sub-AccordionList" id="OperationMenu">
+                    <li><a id="CostMenu" href="JavaScript:;">Cost</a></li>
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions Customeraccess = Focus.Core.FocusPermission.FocusPermissions.Customer_Access;
+//int CustomerMenuAccessId = (int)Customeraccess;
+//var Customer = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == CustomerMenuAccessId);
+//if (Customer != null)
+//{
+                            <li><a id="CustomerMenu" href='@Url.Content("~/Customer")'>Customer</a></li>
+                       // }
+                    }
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions Factoryaccess = Focus.Core.FocusPermission.FocusPermissions.Employee_Access;
+//int FactoryMenuAccessId = (int)Factoryaccess;
+//var Factory = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == FactoryMenuAccessId);
+//if (Factory != null)
+//{
+                            <li><a id="FactoryMenu" href='@Url.Content("~/Factory")'>Factory</a></li>
+                        //}
+                    }
+
+                    <li><a href="JavaScript:;">Material</a></li>
+                    <li><a href="JavaScript:;">Measurement Specification</a></li>
+                    <li><a href="JavaScript:;">Order</a></li>
+                    <li><a href="JavaScript:;">Packing</a></li>
+                    <li><a id="PersonMenu" href='@Url.Content("~/Person")'>Person</a></li>
+                    <li><a href="JavaScript:;">Product</a></li>
+                    <li><a href="JavaScript:;">Production Plan</a></li>
+                    <li><a href="JavaScript:;">Sales Contract</a></li>
+                    <li><a href="JavaScript:;">Shipment</a></li>
+                </ul>
+            </li>
+            <li class="Sub-Accordion">
+                <a href="javascript:;"><i class="fa fa-building-o"></i><span>Definition</span></a>
+                <ul class="Sub-AccordionList" id="DefinitionMenu">
+
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions Brandaccess = Focus.Core.FocusPermission.FocusPermissions.Brand_Access;
+//int MenuAccessId = (int)Brandaccess;
+//var brand = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == MenuAccessId);
+//if (brand != null)
+//{
+                            <li><a id="BrandMenu" href='@Url.Content("~/Brand")'>Brand</a></li>
+                       // }
+                    }
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions Coloraccess = Focus.Core.FocusPermission.FocusPermissions.Color_Access;
+//int ColorMenuAccessId = (int)Coloraccess;
+//var Color = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == ColorMenuAccessId);
+//if (Color != null)
+//{
+                            <li><a id="ColorMenu" href='@Url.Content("~/Color")'>Color</a></li>
+                        //}
+                    }
+
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions ComplianceCertificateaccess = Focus.Core.FocusPermission.FocusPermissions.ComplianceCertificate_Access;
+//int ComplianceCertificateMenuAccessId = (int)ComplianceCertificateaccess;
+//var ComplianceCertificate = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == ComplianceCertificateMenuAccessId);
+//if (ComplianceCertificate != null)
+//{
+                            <li><a id="ComplianceCertificateMenu" href='@Url.Content("~/ComplianceCertificate")'>Compliance Certificate</a></li>
+                        //}
+                    }
+
+
+
+                    <li><a id="ContentMenu" href='@Url.Content("~/Content")'>Content</a></li>
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions Currencyaccess = Focus.Core.FocusPermission.FocusPermissions.Configuration_Access;
+//int CurrencyMenuAccessId = (int)Currencyaccess;
+//var Currency = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == CurrencyMenuAccessId);
+//if (Currency != null)
+//{
+                            <li><a id="CurrencyMenu" href='@Url.Content("~/Currency")'>Currency</a></li>
+                       // }
+                    }
+
+
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions EmployeeTypeaccess = Focus.Core.FocusPermission.FocusPermissions.Employee_Access;
+//int EmployeeTypeMenuAccessId = (int)EmployeeTypeaccess;
+//var EmployeeType = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == EmployeeTypeMenuAccessId);
+//if (EmployeeType != null)
+//{
+                            <li><a id="EmployeeTypeMenu" href='@Url.Content("~/EmployeeType")'>Employee Type</a></li>
+                      //  }
+                    }
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions Employeeccess = Focus.Core.FocusPermission.FocusPermissions.Employee_Access;
+//int EmployeeMenuAccessId = (int)Employeeccess;
+//var Employee = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == EmployeeMenuAccessId);
+//if (Employee != null)
+//{
+                            <li><a id="EmployeeMenu" href='@Url.Content("~/Employee")'>Employee</a></li>
+                        //}
+                    }
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions Genderaccess = Focus.Core.FocusPermission.FocusPermissions.Gender_Access;
+//int GenderMenuAccessId = (int)Genderaccess;
+//var Gender = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == GenderMenuAccessId);
+//if (Gender != null)
+//{
+                            <li><a id="GenderMenu" href='@Url.Content("~/Gender")'>Gender</a></li>
+                        //}
+                    }
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions GroupCompanyaccess = Focus.Core.FocusPermission.FocusPermissions.GroupCompany_Access;
+//int GroupCompanyMenuAccessId = (int)GroupCompanyaccess;
+//var GroupCompany = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == GroupCompanyMenuAccessId);
+//if (GroupCompany != null)
+//{
+                            <li><a id="GroupCompanyMenu" href='@Url.Content("~/GroupCompany")'>Group Company</a></li>
+                       // }
+                    }
+
+
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions MaterialTypeaccess = Focus.Core.FocusPermission.FocusPermissions.MaterialType_Access;
+//int MaterialTypeMenuAccessId = (int)MaterialTypeaccess;
+//var MaterialType = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == MaterialTypeMenuAccessId);
+//if (MaterialType != null)
+//{
+                            <li><a id="MaterialTypeMenu" href='@Url.Content("~/MaterialType")'>Material Type</a></li>
+                       // }
+                    }
+
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions MeasurementTypeaccess = Focus.Core.FocusPermission.FocusPermissions.MeasurementType_Access;
+//int MeasurementTypeMenuAccessId = (int)MeasurementTypeaccess;
+//var MeasurementType = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == MeasurementTypeMenuAccessId);
+//if (MeasurementType != null)
+//{
+                            <li><a id="MeasurementTypeMenu" href='@Url.Content("~/MeasurementType")'>Measurement Type</a></li>
+                       // }
+                    }
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions MessageTypeaccess = Focus.Core.FocusPermission.FocusPermissions.MessageType_Access;
+//int MessageTypeMenuAccessId = (int)MessageTypeaccess;
+//var MessageType = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == MessageTypeMenuAccessId);
+//if (MessageType != null)
+//{
+                            <li><a id="MessageTypeMenu" href='@Url.Content("~/MessageType")'>Message Type</a></li>
+                       // }
+                    }
+
+
+
+
+
+                    <li><a href="JavaScript:;">Order Status</a></li>
+
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions OrderTypeaccess = Focus.Core.FocusPermission.FocusPermissions.OrderType_Access;
+//int OrderTypeMenuAccessId = (int)OrderTypeaccess;
+//var OrderType = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == OrderTypeMenuAccessId);
+//if (OrderType != null)
+//{
+                            <li><a id="OrderTypeMenu" href='@Url.Content("~/OrderType")'>Order Type</a></li>
+                      //  }
+                    }
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions PackingTypeaccess = Focus.Core.FocusPermission.FocusPermissions.PackingType_Access;
+//int PackingTypeMenuAccessId = (int)PackingTypeaccess;
+//var PackingType = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == PackingTypeMenuAccessId);
+//if (PackingType != null)
+//{
+                            <li><a id="PackingTypeMenu" href='@Url.Content("~/PackingType")'>Packing Type</a></li>
+                       // }
+                    }
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions PaymentTypeaccess = Focus.Core.FocusPermission.FocusPermissions.PaymentType_Access;
+//int PaymentTypeMenuAccessId = (int)PaymentTypeaccess;
+//var PaymentType = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == PaymentTypeMenuAccessId);
+//if (PaymentType != null)
+//{
+                            <li><a id="PaymentTypeMenu" href='@Url.Content("~/PaymentType")'>Payment Type</a></li>
+                        //}
+                    }
+
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions PersonTypeaccess = Focus.Core.FocusPermission.FocusPermissions.PersonType_Access;
+//int PersonTypeMenuAccessId = (int)PersonTypeaccess;
+//var PersonType = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == PersonTypeMenuAccessId);
+//if (PersonType != null)
+//{
+                            <li><a id="PersonTypeMenu" href='@Url.Content("~/PersonType")'>Person Type</a></li>
+                        //}
+                    }
+
+
+
+
+
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions PictureTypeaccess = Focus.Core.FocusPermission.FocusPermissions.PictureType_Access;
+//int PictureTypeMenuAccessId = (int)PictureTypeaccess;
+//var PictureType = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == PictureTypeMenuAccessId);
+//if (PictureType != null)
+//{
+                            <li><a id="PictureTypeMenu" href='@Url.Content("~/PictureType")'>Picture Type</a></li>
+                       // }
+                    }
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions ProductionPlanTypeaccess = Focus.Core.FocusPermission.FocusPermissions.ProductionPlanType_Access;
+//int ProductionPlanTypeMenuAccessId = (int)ProductionPlanTypeaccess;
+//var ProductionPlanType = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == ProductionPlanTypeMenuAccessId);
+//if (ProductionPlanType != null)
+//{
+                            <li><a id="ProductionPlanTypeMenu" href='@Url.Content("~/ProductionPlanType")'>Production Plan Type</a></li>
+                       // }
+                    }
+
+                    <li><a id="ProductionPlanTypeMenu" href='#'>Production Type</a></li>
+                    <li><a id="ProductionProcessMenu" href='@Url.Content("~/ProductionProcess")'>Production Process</a></li>
+                    <li><a href="JavaScript:;">Production Process Group</a></li>
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions Seasonaccess = Focus.Core.FocusPermission.FocusPermissions.Season_Access;
+//int SeasonMenuAccessId = (int)Seasonaccess;
+//var Season = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == SeasonMenuAccessId);
+//if (Season != null)
+//{
+                            <li><a id="SeasonMenu" href='@Url.Content("~/Season")'>Season</a></li>
+                       // }
+                    }
+
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions SeasonYearaccess = Focus.Core.FocusPermission.FocusPermissions.SeasonYear_Access;
+//int SeasonYearMenuAccessId = (int)SeasonYearaccess;
+//var SeasonYear = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == SeasonYearMenuAccessId);
+//if (SeasonYear != null)
+//{
+                            <li><a id="SeasonYearMenu" href='@Url.Content("~/SeasonYear")'>Season Year</a></li>
+                        //}
+                    }
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions Sizeaccess = Focus.Core.FocusPermission.FocusPermissions.Size_Access;
+//int SizeMenuAccessId = (int)Sizeaccess;
+//var Size = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == SizeMenuAccessId);
+//if (Size != null)
+//{
+                            <li><a id="SizeMenu" href='@Url.Content("~/Size")'>Size</a></li>
+                       // }
+                    }
+
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions Titleaccess = Focus.Core.FocusPermission.FocusPermissions.Size_Access;
+//int TitleMenuAccessId = (int)Titleaccess;
+//var Title = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == TitleMenuAccessId);
+//if (Title != null)
+//{
+                            <li><a id="TitleMenu" href='@Url.Content("~/Title")'>Title</a></li>
+                       // }
+                    }
+
+                </ul>
+            </li>
+            <li class="Sub-Accordion">
+                <a href="javascript:;"><i class="fa fa-bar-chart-o"></i><span>Report</span></a>
+                <ul class="Sub-AccordionList" id="ReportMenu">
+                    <li><a href="JavaScript:;">Factory</a></li>
+                    <li><a href="JavaScript:;">Customer</a></li>
+                    <li><a href="JavaScript:;">Employee</a></li>
+                    <li><a href="JavaScript:;">Production</a></li>
+                    <li><a href="JavaScript:;">Shipment</a></li>
+                    <li><a href="JavaScript:;">Order</a></li>
+                    <li><a href="JavaScript:;">Packing</a></li>
+                    <li><a href="JavaScript:;">Person</a></li>
+                </ul>
+            </li>
+            <li class="Sub-Accordion">
+                <a href="javascript:;"><i class="fa fa-gears"></i><span>Administration</span></a>
+                <ul class="Sub-AccordionList" id="AdministrationMenu">
+                    @{
+//Focus.Core.FocusPermission.FocusPermissions Configurationaccess = Focus.Core.FocusPermission.FocusPermissions.Configuration_Access;
+//int ConfigurationMenuAccessId = (int)Configurationaccess;
+//var Configuration = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == ConfigurationMenuAccessId);
+//if (Configuration != null)
+//{
+                            @*<li><a href="~/Configuration">Configuration</a></li>*@
+                       // }
+                    }
+                    @*@{
+                        Focus.Core.FocusPermission.FocusPermissions Useraccess = Focus.Core.FocusPermission.FocusPermissions.User_Access;
+                        int UserMenuAccessId = (int)Useraccess;
+                        var User = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == UserMenuAccessId);
+                        if (User != null)
+                        {
+                            <li><a id="UserMenu" href='@Url.Content("~/User")'>User</a></li>
+                        }
+                    }*@
+                    <li><a id="UserMenu" href='@Url.Content("~/Patient")'>Patient</a></li>
+                    @*@{
+                        Focus.Core.FocusPermission.FocusPermissions UserTypeaccess = Focus.Core.FocusPermission.FocusPermissions.UserType_Access;
+                        int UserTypeMenuAccessId = (int)UserTypeaccess;
+                        var UserType = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == UserTypeMenuAccessId);
+                        if (UserType != null)
+                        {
+                            <li><a id="UserTypeMenu" href='@Url.Content("~/UserType")'>User Type</a></li>
+                        }
+                    }*@
+                    @*<li><a id="UserTypeMenu" href='@Url.Content("~/UserType")'>User Type</a></li>
+                   
+                    <li><a id="PermissionTypeMenu" href='@Url.Content("~/PermissionType")'>Permission Type</a></li>*@
+
+                    @*@{
+                        Focus.Core.FocusPermission.FocusPermissions Permissionaccess = Focus.Core.FocusPermission.FocusPermissions.Permission_Access;
+                        int PermissionMenuAccessId = (int)Permissionaccess;
+                        var Permission = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == PermissionMenuAccessId);
+                        if (Permission != null)
+                        {
+                            <li><a id="PermissionMenu" href='@Url.Content("~/Permission")'>Permission</a></li>
+                        }
+                    }*@
+                    @*<li><a id="PermissionMenu" href='@Url.Content("~/Permission")'>Permission</a></li>*@
+                    @*@{
+                        Focus.Core.FocusPermission.FocusPermissions UserTypePermissionaccess = Focus.Core.FocusPermission.FocusPermissions.UserTypePermission_Access;
+                        int UserTypePermissionMenuAccessId = (int)UserTypePermissionaccess;
+                        var UserTypePermission = Model.MenuPrivilegeModelList.FirstOrDefault(x => x.PermissionRef == UserTypePermissionMenuAccessId);
+                        if (UserTypePermission != null)
+                        {
+                            <li><a id="UserTypePermissionMenu" href='@Url.Content("~/UserTypePermission")'>User Type Permission</a></li>
+                        }
+                    }*@
+                    @*<li><a id="UserTypePermissionMenu" href='@Url.Content("~/UserTypePermission")'>User Type Permission</a></li>
+                   
+                   
+                    <li><a href="JavaScript:;">Login Log</a></li>*@
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+
+</aside>

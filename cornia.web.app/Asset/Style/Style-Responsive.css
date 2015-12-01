@@ -1,0 +1,57 @@
+﻿
+@media (max-width: 768px)
+{
+
+    .k-grid-toolbar
+    {
+        max-height: 2.1em !important;
+    }
+
+    .Header .navbar-collapse.collapse
+    {
+        display: block;
+        visibility: visible;
+    }
+
+    .navbar-brand
+    {
+        border-right: none;
+        text-align: center;
+        margin: 0 auto;
+        width: 100%;
+        display: inline-block;
+    }
+
+    .dropdown-menu
+    {
+        position: absolute !important;
+        background-color: #fff !important;
+    }
+
+    #btnSideMenu
+    {
+        margin-left: 0.5em;
+    }
+
+    .NavMenuSide
+    {
+        float: left;
+        display: inline-block;
+    }
+
+    .NavMenuRest
+    {
+        float: right;
+        display: inline-block;
+    }
+
+    .NavMenuRest li
+    {
+        display: inline-block;
+    }
+
+
+
+
+
+}
